@@ -1,11 +1,11 @@
 import re
-from typing import Generator
+from typing import Generator, Optional, Sequence, cast
 
 
 class Token:
     __slot__ = ("kind", "value", "groups")
 
-    def __init__(self, kind, value, groups):
+    def __init__(self, kind: str, value: Optional[str], groups: Sequence[str]):
         self.kind = kind
         self.value = value
         self.groups = groups
@@ -23,7 +23,7 @@ def tokenizer(input: str) -> Generator[Token, None, None]:
     ]
     tok_regex = "|".join("(?P<%s>%s)" % pair for pair in token_specification)
     for mo in re.finditer(tok_regex, input):
-        kind = mo.lastgroup
+        kind = cast(str, mo.lastgroup)
         value = mo.group()
         groups = mo.groups()
         yield Token(kind, value, groups)
