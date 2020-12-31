@@ -3,8 +3,8 @@
 project=sondoc
 find . -name "*.py" | entr sh -c "
     set -e
-    dmypy run -- $project
-    flake8 $project
+    dmypy run -- tests $project
+    flake8 tests $project
     pytest tests
-    ag TODO $project
+    ag TODO tests $project
 "

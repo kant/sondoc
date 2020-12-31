@@ -1,4 +1,5 @@
 import re
+from typing import Generator
 
 
 class Token:
@@ -10,7 +11,7 @@ class Token:
         self.groups = groups
 
 
-def tokenizer(input):
+def tokenizer(input: str) -> Generator[Token, None, None]:
     token_specification = [
         ("REFERENCE_WITH_CONTEXT", r"\b(_\w+_)\{([^}{]+)\}"),
         ("DEFINITION_WITH_CONTEXT", r"\*(_\w+_)\*\{([^}{]+)\}"),
