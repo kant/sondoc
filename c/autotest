@@ -5,6 +5,6 @@ find . -name "*.py" | entr sh -c "
     set -e
     dmypy run -- $project
     flake8 $project
-    # pytest $project
+    pytest tests
     ag TODO $project
 "
