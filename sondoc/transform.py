@@ -12,11 +12,13 @@ class Token:
 
 def tokenizer(input):
     token_specification = [
-        ("REFERENCE_WITH_CONTEXT", r"\b(_\w+_)\{([^\{\}]*)\}"),
-        ("DEFINITION_WITH_CONTEXT", r"\b\*(_\w+_)\*\{([^\{\}]*)\}"),
+        ("REFERENCE_WITH_CONTEXT", r"\b(_\w+_)\{([^}{]+)\}"),
+        ("DEFINITION_WITH_CONTEXT", r"\*(_\w+_)\*\{([^}{]+)\}"),
         ("REFERENCE", r"\b(_\w+_)\b"),
-        ("DEFINITION", r"\b\*(_\w+_)\*\b"),
-        ("TEXT", r"[^_)(}{\[\]]+"),
+        ("DEFINITION", r"\*(_\w+_)\*"),
+        ("IMAGE", r"!\[[^\[\]]+\]\([^)(]+\)"),
+        ("TEXT", r"[^_)(}{\[\]!\*]+"),
+        ("CHAR", r"."),
     ]
     tok_regex = "|".join("(?P<%s>%s)" % pair for pair in token_specification)
     for mo in re.finditer(tok_regex, input):

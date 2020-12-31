@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-sondoc = {path = "."}
+sondoc = {editable = true, path = "."}
 
 [dev-packages]
 sondoc = {editable = true, extras = ["dev"], path = "."}
