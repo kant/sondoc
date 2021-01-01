@@ -40,9 +40,14 @@ def prepare(input, output, rm):
     nargs=1,
     type=click.Path(exists=True, file_okay=False, resolve_path=True),
 )
-def bind(input):
-    output = Path("output.html").absolute()
-    run_bind(Path(input), output)
+@click.option(
+    "--output",
+    default="output.html",
+    type=click.Path(file_okay=True, dir_okay=False, writable=True),
+    help="Output file",
+)
+def bind(input, output):
+    run_bind(Path(input), Path(output))
 
 
 if __name__ == "__main__":

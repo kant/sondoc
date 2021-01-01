@@ -11,6 +11,7 @@ def bind(
     follow: bool = False,
 ) -> None:
     md_inputs: List[str] = []
+    output_path = output.absolute()
     os.chdir(input)
     for root, _, files in os.walk(".", followlinks=follow):
         for file_ in files:
@@ -27,7 +28,7 @@ def bind(
             "--shift-heading-level-by=-1",
             f"--title={title}",
             "-o",
-            str(output),
+            str(output_path),
         ]
         + sorted(md_inputs),
         check=True,
