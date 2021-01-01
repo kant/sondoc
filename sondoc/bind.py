@@ -51,10 +51,11 @@ p {
 a {
   color: #1a1a1a;
   text-decoration: none;
-  font-style: italic;
+  background-color: #ffffee;
 }
 a:visited {
   color: #1a1a1a;
+  background-color: #ffffee;
 }
 img {
   max-width: 100%;
