@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image  # type: ignore
 
 from .transform import html_crossref, want_webp
 

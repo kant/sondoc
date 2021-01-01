@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from subprocess import run
+from typing import List
 
 
 def bind(
@@ -9,7 +10,7 @@ def bind(
     title: str = "No titel",
     follow: bool = False,
 ) -> None:
-    md_inputs = []
+    md_inputs: List[str] = []
     os.chdir(input)
     for root, _, files in os.walk(".", followlinks=follow):
         for file_ in files:
@@ -26,7 +27,7 @@ def bind(
             "--shift-heading-level-by=-1",
             f"--title={title}",
             "-o",
-            output,
+            str(output),
         ]
         + sorted(md_inputs),
         check=True,

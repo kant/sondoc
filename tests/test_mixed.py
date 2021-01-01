@@ -18,15 +18,15 @@ left!
 """
 
 snapshot = """
-<a href="#_sc__Situation_">Situation</a>
+<span id="_sc__Situation_">Situation</span>
 
-<div id="_sc__Situation_">We have no more water!</div>
+<a href="#_sc__Situation_">We have no more water!</a>
 
-Just a reference <div id="_sc__Situation_"></div>.
+Just a reference <a href="#_sc__Situation_"><sup>ref</sup></a>.
 
-asdf <a href="#_definition_"><sup>ref</sup></a> asdf
+asdf <span id="_definition_"></span> asdf
 
-![cosmic](~global/img/cosmic.jpg))
+![cosmic](~global/img/cosmic.webp)
 
 left!
 """
