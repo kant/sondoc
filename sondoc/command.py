@@ -40,6 +40,11 @@ def prepare(input, output, rm):
     nargs=1,
     type=click.Path(exists=True, file_okay=False, resolve_path=True),
 )
+@click.argument(
+    "title",
+    nargs=-1,
+    type=str,
+)
 @click.option(
     "--output",
     default="output.html",
@@ -47,8 +52,8 @@ def prepare(input, output, rm):
     help="Output file",
 )
 @click.option("--follow/--no-follow", default=False, help="Follow symlinks")
-def bind(input, output, follow):
-    run_bind(Path(input), Path(output), follow)
+def bind(input, output, title, follow):
+    run_bind(Path(input), Path(output), " ".join(title), follow)
 
 
 if __name__ == "__main__":

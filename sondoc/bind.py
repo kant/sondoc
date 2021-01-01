@@ -159,6 +159,7 @@ def temp_css():
 def bind(
     input: Path,
     output: Path,
+    title: str = "No title",
     follow: bool = False,
 ) -> None:
     md_inputs: List[str] = []
@@ -177,7 +178,8 @@ def bind(
                 "--toc",
                 "--file-scope",
                 "--self-contained",
-                "--shift-heading-level-by=-1",
+                "--metadata",
+                f"title={title}",
                 "-c",
                 temp,
                 "-o",
@@ -186,4 +188,4 @@ def bind(
             + sorted(md_inputs),
             check=True,
         )
-    print(f"Bound: {output}")
+    print(f"Bound: {output} {title}")
