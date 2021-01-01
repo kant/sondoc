@@ -2,6 +2,8 @@ import re
 from pathlib import Path
 from typing import Generator, Optional, Sequence, cast
 
+want_webp = True
+
 
 class Token:
     __slot__ = ("kind", "value", "groups")
@@ -53,7 +55,10 @@ def html_crossref(input: str, directory: str = "./") -> str:
             if kind == "IMAGE":
                 text = groups[1]
                 link = groups[2]
-                abs_link = Path(directory, link).with_suffix(".jpg")
+                if want_webp:
+                    abs_link = Path(directory, link).with_suffix(".webp")
+                else:
+                    abs_link = Path(directory, link).with_suffix(".jpg")
                 md = f"![{text}]({abs_link})"
                 result.append(md)
             else:

@@ -3,11 +3,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from .transform import html_crossref
+from .transform import html_crossref, want_webp
 
 target_width = 1024 + 256
-
-want_webp = True
 
 
 def mkdir(path: Path):
