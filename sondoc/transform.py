@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 from typing import Generator, Optional, Sequence, cast
 
 
@@ -17,7 +18,7 @@ def tokenizer(input: str) -> Generator[Token, None, None]:
         ("DEFINITION_WITH_CONTEXT", r"\*(_\w+_)\*\{([^}{]+)\}"),
         ("REFERENCE", r"\b(_\w+_)\b"),
         ("DEFINITION", r"\*(_\w+_)\*"),
-        ("IMAGE", r"!\[[^\[\]]+\]\([^)(]+\)"),
+        ("IMAGE", r"!\[([^\[\]]+)\]\(([^)(]+\))"),
         ("TEXT", r"[^_)(}{\[\]!\*]+"),
         ("CHAR", r"."),
     ]
@@ -27,3 +28,34 @@ def tokenizer(input: str) -> Generator[Token, None, None]:
         value = mo.group()
         groups = [x for x in mo.groups() if x is not None]
         yield Token(kind, value, groups)
+
+
+def html_crossref(input: str, directory: str = "./") -> str:
+    result = []
+    for token in tokenizer(input):
+        kind = token.kind
+        groups = token.groups
+        reference = kind.startswith("REFERENCE")
+        definition = kind.startswith("DEFINITION")
+        if reference or definition:
+            symbol = groups[1]
+            context = ""
+            if len(groups) > 2:
+                context = groups[2]
+            if reference:
+                html = f'<div id="{symbol}">{context}</div>'
+            else:
+                if not context:
+                    context = "<sup>ref</sup>"
+                html = f'<a href="#{symbol}">{context}</a>'
+            result.append(html)
+        else:
+            if kind == "IMAGE":
+                text = groups[1]
+                link = groups[2]
+                abs_link = Path(directory, link)
+                md = f"![{text}]({abs_link})"
+                result.append(md)
+            else:
+                result.append(token.value)
+    return "".join(result)
