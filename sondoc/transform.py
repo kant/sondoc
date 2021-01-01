@@ -25,5 +25,5 @@ def tokenizer(input: str) -> Generator[Token, None, None]:
     for mo in re.finditer(tok_regex, input):
         kind = cast(str, mo.lastgroup)
         value = mo.group()
-        groups = mo.groups()
+        groups = [x for x in mo.groups() if x is not None]
         yield Token(kind, value, groups)

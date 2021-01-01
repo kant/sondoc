@@ -35,3 +35,11 @@ def test_tokenizer_values():
     tokens = list(tokenizer(mixed))
     result = set([x.value for x in tokens if x.kind not in ("TEXT", "CHAR")])
     assert values == result
+
+
+def test_tokenizer_symbols():
+    tokens = list(tokenizer(mixed))
+    result = set(
+        [x.groups[1] for x in tokens if x.kind not in ("TEXT", "CHAR", "IMAGE")]
+    )
+    assert result == {"_definition_", "_sc__Situation_"}

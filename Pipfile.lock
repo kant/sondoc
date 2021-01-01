@@ -151,6 +151,14 @@
             ],
             "version": "==0.4.1"
         },
+        "hypothesis": {
+            "hashes": [
+                "sha256:546db914a7a7be1ccacbd408cf4cec4fa958b96b4015a2216f8187e4f0ec7eaa",
+                "sha256:9377cd796a5bca3c0ae74ef1c592aa231d3a04cde948467bace9344148ee75cb"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==5.43.5"
+        },
         "iniconfig": {
             "hashes": [
                 "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3",
@@ -419,6 +427,13 @@
         "sondoc": {
             "editable": true,
             "path": "."
+        },
+        "sortedcontainers": {
+            "hashes": [
+                "sha256:37257a32add0a3ee490bb170b599e93095eed89a55da91fa9f48753ea12fd73f",
+                "sha256:59cc937650cf60d677c16775597c89a960658a09cf7c1a668f86e1e4464b10a1"
+            ],
+            "version": "==2.3.0"
         },
         "testfixtures": {
             "hashes": [
