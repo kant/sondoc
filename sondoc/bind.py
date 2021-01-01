@@ -11,7 +11,7 @@ html {
   font-family: Georgia, serif;
   font-size: 20px;
   color: #1a1a1a;
-  background-color: #fdfdfd;
+  background-color: #fdfdf8;
 }
 body {
   margin: 0 auto;
