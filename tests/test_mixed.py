@@ -18,13 +18,13 @@ left!
 """
 
 snapshot = """
-<span id="_sc__Situation_">Situation</span>
+<span class="symbol" title="_sc__Situation_" id="_sc__Situation_">Situation</span>
 
-<a href="#_sc__Situation_">We have no more water!</a>
+<a title="_sc__Situation_" href="#_sc__Situation_">We have no more water!</a>
 
-Just a reference <a href="#_sc__Situation_"><sup>ref</sup></a>.
+Just a reference <a title="_sc__Situation_" href="#_sc__Situation_"><sup>ref</sup></a>.
 
-asdf <span id="_definition_"></span> asdf
+asdf <span class="symbol" title="_definition_" id="_definition_"></span> asdf
 
 ![cosmic](~global/img/cosmic.webp)
 
@@ -71,6 +71,7 @@ def test_tokenizer_symbols():
 
 def test_crossref():
     result = html_crossref(mixed)
+    print(result)
     assert result.strip() == snapshot.strip()
 
 
