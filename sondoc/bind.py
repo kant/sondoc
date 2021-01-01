@@ -48,6 +48,9 @@ body {
 p {
   margin: 1em 0;
 }
+span.symbol {
+  font-style: italic;
+}
 a {
   color: #164C73;
   text-decoration: none;
