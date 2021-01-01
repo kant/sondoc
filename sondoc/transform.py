@@ -37,10 +37,18 @@ def symbols_to_spaces(input: str) -> str:
     for token in tokenizer(input):
         value = token.value
         if value:
-            if token.kind not in ("TEXT", "CHAR"):
+            if token.kind in ("TEXT", "CHAR"):
                 result.append(value)
             else:
-                result.append(" " * len(value))
+                groups = token.groups
+                glen = len(groups)
+                if glen == 1:
+                    result.append(" " * len(value))
+                elif glen < 3:
+                    result.append(" " * len(value))
+                else:
+                    result.append(" " * len(groups[1]))
+                    result.append(f" {groups[2]} ")
     return "".join(result)
 
 
