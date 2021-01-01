@@ -1,3 +1,6 @@
+from hypothesis import given
+from hypothesis.strategies import text
+
 from sondoc.transform import tokenizer
 
 mixed = """
@@ -29,6 +32,13 @@ def test_tokenizer_reproduce():
     tokens = list(tokenizer(mixed))
     result = "".join([x.value for x in tokens])
     assert result == mixed
+
+
+@given(text())
+def test_tokenizer_reproduce_hyp(text):
+    tokens = list(tokenizer(text))
+    result = "".join([x.value for x in tokens])
+    assert result == text
 
 
 def test_tokenizer_values():
