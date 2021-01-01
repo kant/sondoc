@@ -53,9 +53,11 @@ def html_crossref(input: str, directory: str = "./") -> str:
             if kind == "IMAGE":
                 text = groups[1]
                 link = groups[2]
-                abs_link = Path(directory, link)
+                abs_link = Path(directory, link).with_suffix(".jpg")
                 md = f"![{text}]({abs_link})"
                 result.append(md)
             else:
-                result.append(token.value)
+                value = token.value
+                if value:
+                    result.append(value)
     return "".join(result)
