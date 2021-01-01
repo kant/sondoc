@@ -14,15 +14,9 @@ def cli():
 
 @cli.command(help="Prepare the input for binding it to a document")
 @click.argument(
-    "input",
-    nargs=1,
-    type=click.Path(exists=True, file_okay=False, resolve_path=True),
+    "input", nargs=1, type=click.Path(exists=True, file_okay=False, resolve_path=True)
 )
-@click.argument(
-    "output",
-    nargs=1,
-    type=click.Path(file_okay=False, resolve_path=True),
-)
+@click.argument("output", nargs=1, type=click.Path(file_okay=False, resolve_path=True))
 @click.option(
     "--rm/--no-rm", default=False, help="Remove output folder before preparing"
 )
@@ -36,15 +30,9 @@ def prepare(input, output, rm):
     help="Bind the output of prepare to a document, can point to a subfolder of the prepare output."
 )
 @click.argument(
-    "input",
-    nargs=1,
-    type=click.Path(exists=True, file_okay=False, resolve_path=True),
+    "input", nargs=1, type=click.Path(exists=True, file_okay=False, resolve_path=True)
 )
-@click.argument(
-    "title",
-    nargs=-1,
-    type=str,
-)
+@click.argument("title", nargs=-1, type=str, required=True)
 @click.option(
     "--output",
     default="output.html",
