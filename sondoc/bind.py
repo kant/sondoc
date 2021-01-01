@@ -7,7 +7,6 @@ from typing import List
 def bind(
     input: Path,
     output: Path,
-    title: str = "No titel",
     follow: bool = False,
 ) -> None:
     md_inputs: List[str] = []
@@ -26,7 +25,6 @@ def bind(
             "--file-scope",
             "--self-contained",
             "--shift-heading-level-by=-1",
-            f"--title={title}",
             "-o",
             str(output_path),
         ]

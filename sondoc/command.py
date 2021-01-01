@@ -46,8 +46,9 @@ def prepare(input, output, rm):
     type=click.Path(file_okay=True, dir_okay=False, writable=True),
     help="Output file",
 )
-def bind(input, output):
-    run_bind(Path(input), Path(output))
+@click.option("--follow/--no-follow", default=False, help="Follow symlinks")
+def bind(input, output, follow):
+    run_bind(Path(input), Path(output), follow)
 
 
 if __name__ == "__main__":
