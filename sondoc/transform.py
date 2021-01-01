@@ -67,9 +67,9 @@ def html_crossref(input: str, directory: str = "./") -> str:
             if reference:
                 if not context:
                     context = "<sup>ref</sup>"
-                html = f'<a href="#{symbol}">{context}</a>'
+                html = f'<a title="{symbol}" href="#{symbol}">{context}</a>'
             else:
-                html = f'<span id="{symbol}">{context}</span>'
+                html = f'<span title="{symbol}" id="{symbol}">{context}</span>'
             result.append(html)
         else:
             if kind == "IMAGE":

@@ -49,12 +49,11 @@ p {
   margin: 1em 0;
 }
 a {
-  color: #1a1a1a;
+  color: #164C73;
   text-decoration: none;
-  background-color: #ffffee;
 }
 a:visited {
-  color: #1a1a1a;
+  color: #164C73;
   background-color: #ffffee;
 }
 img {
