@@ -32,6 +32,18 @@ def tokenizer(input: str) -> Generator[Token, None, None]:
         yield Token(kind, value, groups)
 
 
+def symbols_to_spaces(input: str) -> str:
+    result = []
+    for token in tokenizer(input):
+        value = token.value
+        if value:
+            if token.kind not in ("TEXT", "CHAR"):
+                result.append(value)
+            else:
+                result.append(" " * len(value))
+    return "".join(result)
+
+
 def html_crossref(input: str, directory: str = "./") -> str:
     result = []
     for token in tokenizer(input):
