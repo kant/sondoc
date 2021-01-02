@@ -35,7 +35,7 @@ body {
   body {
     background-color: transparent;
     color: black;
-    font-size: 12pt;
+    font-size: 10pt;
   }
   p, h2, h3 {
     orphans: 3;
@@ -43,6 +43,13 @@ body {
   }
   h2, h3, h4 {
     page-break-after: avoid;
+  }
+  @page {
+    size: A4;
+    @bottom-center {
+      font-size: 10pt;
+      content: counter(page);
+    }
   }
 }
 p {
@@ -141,7 +148,6 @@ header {
 #TOC a:not(:hover) {
   text-decoration: none;
 }
-
 """
 
 
